@@ -1,0 +1,158 @@
+C51 COMPILER V9.60.0.0   17_TRAFFIC_LIGHT_CONTROLLER                                       05/03/2020 20:18:50 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE 17_TRAFFIC_LIGHT_CONTROLLER
+OBJECT MODULE PLACED IN .\Objects\17_Traffic_Light_Controller.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE 17_Traffic_Light_Controller.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEN
+                    -D PRINT(.\Listings\17_Traffic_Light_Controller.lst) TABS(2) OBJECT(.\Objects\17_Traffic_Light_Controller.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          sbit LR = P1^0;
+   3          sbit LY = P1^1;
+   4          sbit LG = P1^2;
+   5          sbit RR = P1^3;
+   6          sbit RY = P1^4;
+   7          sbit RG = P1^5;
+   8          sbit UR = P1^6;
+   9          sbit UY = P1^7;
+  10          sbit UG = P3^7;
+  11          sbit DR = P3^4;
+  12          sbit DY = P3^5;
+  13          sbit DG = P3^6;
+  14          void TLCDelay(unsigned int a);
+  15          void main(void)
+  16          {
+  17   1        while(1)
+  18   1        {
+  19   2          LR = 0;
+  20   2          LY = 0;
+  21   2          LG = 1;
+  22   2          RR = 1;
+  23   2          RY = 0;
+  24   2          RG = 0;
+  25   2          UR = 1;
+  26   2          UY = 0;
+  27   2          UG = 0;
+  28   2          DR = 1;
+  29   2          DY = 0;
+  30   2          DG = 0;
+  31   2          TLCDelay(800);  // Left side green
+  32   2          LR = 0;
+  33   2          LY = 1;
+  34   2          LG = 0;
+  35   2          RR = 1;
+  36   2          RY = 0;
+  37   2          RG = 0;
+  38   2          UR = 1;
+  39   2          UY = 0;
+  40   2          UG = 0;
+  41   2          DR = 1;
+  42   2          DY = 0;
+  43   2          DG = 0;
+  44   2          TLCDelay(300);   //Left side yellow
+  45   2          LR = 1;
+  46   2          LY = 0;
+  47   2          LG = 0;
+  48   2          RR = 0;
+  49   2          RY = 0;
+  50   2          RG = 1;
+  51   2          UR = 1;
+  52   2          UY = 0;
+  53   2          UG = 0;
+  54   2          DR = 1;
+C51 COMPILER V9.60.0.0   17_TRAFFIC_LIGHT_CONTROLLER                                       05/03/2020 20:18:50 PAGE 2   
+
+  55   2          DY = 0;
+  56   2          DG = 0;
+  57   2          TLCDelay(800);  // Right side green
+  58   2          LR = 1;
+  59   2          LY = 0;
+  60   2          LG = 0;
+  61   2          RR = 0;
+  62   2          RY = 1;
+  63   2          RG = 0;
+  64   2          UR = 1;
+  65   2          UY = 0;
+  66   2          UG = 0;
+  67   2          DR = 1;
+  68   2          DY = 0;
+  69   2          DG = 0;
+  70   2          TLCDelay(300);  // Right side yellow
+  71   2          LR = 1;
+  72   2          LY = 0;
+  73   2          LG = 0;
+  74   2          RR = 1;
+  75   2          RY = 0;
+  76   2          RG = 0;
+  77   2          UR = 0;
+  78   2          UY = 0;
+  79   2          UG = 1;
+  80   2          DR = 1;
+  81   2          DY = 0;
+  82   2          DG = 0;
+  83   2          TLCDelay(800); // Upside Green
+  84   2          LR = 1;
+  85   2          LY = 0;
+  86   2          LG = 0;
+  87   2          RR = 1;
+  88   2          RY = 0;
+  89   2          RG = 0;
+  90   2          UR = 0;
+  91   2          UY = 1;
+  92   2          UG = 0;
+  93   2          DR = 1;
+  94   2          DY = 0;
+  95   2          DG = 0;
+  96   2          TLCDelay(300); // Upside Yellow
+  97   2          LR = 1;
+  98   2          LY = 0;
+  99   2          LG = 0;
+ 100   2          RR = 1;
+ 101   2          RY = 0;
+ 102   2          RG = 0;
+ 103   2          UR = 1;
+ 104   2          UY = 0;
+ 105   2          UG = 0;
+ 106   2          DR = 0;
+ 107   2          DY = 0;
+ 108   2          DG = 1;
+ 109   2          TLCDelay(800); // Down side Green
+ 110   2          LR = 1;
+ 111   2          LY = 0;
+ 112   2          LG = 0;
+ 113   2          RR = 1;
+ 114   2          RY = 0;
+ 115   2          RG = 0;
+ 116   2          UR = 1;
+C51 COMPILER V9.60.0.0   17_TRAFFIC_LIGHT_CONTROLLER                                       05/03/2020 20:18:50 PAGE 3   
+
+ 117   2          UY = 0;
+ 118   2          UG = 0;
+ 119   2          DR = 0;
+ 120   2          DY = 1;
+ 121   2          DG = 0;
+ 122   2          TLCDelay(300); // Down side Yellow
+ 123   2        } 
+ 124   1      }
+ 125          void TLCDelay(unsigned int a)
+ 126          {
+ 127   1        unsigned int b,c;
+ 128   1        for(b=0;b<a;b++)
+ 129   1          for(c=0;c<1275;c++);
+ 130   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    247    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
